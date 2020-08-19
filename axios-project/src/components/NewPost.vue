@@ -1,30 +1,30 @@
 <template>
   <div class="container pt-5">
-    <h3>Yazı Ekle</h3>
+    <h3>Add text</h3>
     <hr>
     <form @submit.prevent="onSubmit">
       <div class="form-group">
-        <label>Yazar</label>
-        <input v-model="post.author" type="text" class="form-control" placeholder="Yazar adını giriniz...">
+        <label>Author</label>
+        <input v-model="post.author" type="text" class="form-control" placeholder="Enter author name...">
       </div>
       <div class="form-group">
-        <label>Başlık</label>
-        <input v-model="post.title" type="text" class="form-control" placeholder="Yazının başlığını giriniz...">
+        <label>Title</label>
+        <input v-model="post.title" type="text" class="form-control" placeholder="Enter author title...">
       </div>
       <div class="form-group">
-        <label>Görsel Bağlantısı</label>
-        <input v-model="post.thumbnail" type="text" class="form-control" placeholder="Yazının görselini giriniz...">
+        <label>Image Link</label>
+        <input v-model="post.thumbnail" type="text" class="form-control" placeholder="Enter text image link...">
       </div>
       <div class="form-group">
-        <label>Önizleme Metni</label>
-        <input v-model="post.previewText" type="text" class="form-control" placeholder="Yazının önizleme metnini giriniz...">
+        <label>Preview Text</label>
+        <input v-model="post.previewText" type="text" class="form-control" placeholder="Enter preview text..">
       </div>
       <div class="form-group">
-        <label>Yazı</label>
+        <label>Description</label>
         <textarea v-model="post.content" cols="30" rows="5" class="form-control"></textarea>
       </div>
-      <button @click="$router.push('/')" class="btn btn-danger">İptal</button>
-      <button type="submit" class="btn btn-info">Kaydet</button>
+      <button @click="$router.push('/')" class="btn btn-danger">Cabcel</button>
+      <button type="submit" class="btn btn-info">Save</button>
     </form>
   </div>
 </template>
