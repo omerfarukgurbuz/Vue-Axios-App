@@ -28,7 +28,10 @@
     </form>
   </div>
 </template>
+
 <script>
+import axios from "axios";
+
   export default {
     data(){
       return {
@@ -43,8 +46,14 @@
       }
     },
     methods : {
+
+      /*::::::::::::::::| Axios post |::::::::::::::::*/
       onSubmit(){
-        console.log({ ...this.post, updatedDate : new Date()});
+        axios.post("/post.json", {...this.post, updatedDate: new Date() })
+        .then(response => {
+          console.log(response);
+          this.post = {};
+        })
       }
     }
   }

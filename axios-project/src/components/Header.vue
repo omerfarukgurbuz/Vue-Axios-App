@@ -13,7 +13,7 @@
           active-class="active"
           exact
           to="/">
-          <a class="nav-link" href="#">Yazı Listesi</a>
+          <a class="nav-link" href="#">Posts</a>
         </router-link>
         <router-link
           tag="li"
@@ -21,7 +21,7 @@
           active-class="active"
           exact
           to="/new-post">
-          <a class="nav-link" href="#">Yeni Ekle</a>
+          <a class="nav-link" href="#">New Add</a>
         </router-link>
       </ul>
     </div>

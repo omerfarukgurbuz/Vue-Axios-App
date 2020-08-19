@@ -1,59 +1,49 @@
 <template>
   <div class="container-fluid pt-5">
-    <h1 class="text-center">Yazı Listesi</h1>
+    <h1 class="text-center">Posts</h1>
     <hr>
     <div class="d-flex flex-wrap flex-row justify-content-center align-items-center">
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
+      <div class="card m-1" v-for="post in postList">
+        <img class="card-img-top" :src="post.thumbnail" :alt="post.title" style="height: 400px">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-      <div class="card m-1">
-        <img class="card-img-top" src="https://i.ytimg.com/vi/a1kDpfwO16s/maxresdefault.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <h5 class="card-title"> {{ post.title }} </h5>
+          <p class="card-text"> {{ post.previewText }} </p>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import customAxios from "../custom_axios";
+
+  export default {
+
+    data(){
+      return {
+        postList: []
+      }
+    },
+
+    created() {
+
+      /*::::::::::::::::| Axios get |::::::::::::::::*/
+      customAxios.get("/post.json")
+      .then(response => {
+        let data = response.data;
+        for(let key in data){
+          this.postList.push({...data[key], id: key});
+        }
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    }
+  }
+
+</script>
+
+
 <style>
   .card {
     width: 300px;
